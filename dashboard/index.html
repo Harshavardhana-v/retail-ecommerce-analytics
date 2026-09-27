@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Retail & E-Commerce Analytics</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+
+        <header>
+
+            <div>
+
+                <h1>
+                    Retail & E-Commerce Analytics
+                </h1>
+
+                <p>
+                    Real-Time Purchase Trend Dashboard
+                </p>
+
+            </div>
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+            
+                <span id="status">
+                    LIVE
+                </span>
+            
+            </div>
+
+        </header>
+
+
+        <!-- Summary Cards -->
+
+        <section class="summary">
+
+            <div id="eventNotification" class="event-notification">
+                Waiting for new events...
+            </div>
+
+            <div class="card">
+
+                <h3>
+                    Analysis Window
+                </h3>
+
+                <p id="window">
+                    60 Minutes
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Events in Window
+                </h3>
+            
+                <p id="events">
+                    -
+                </p>
+            
+            </div>
+            
+            
+            <div class="card">
+            
+                <h3>
+                    Total Events Received
+                </h3>
+            
+                <p id="totalEvents">
+                    -
+                </p>
+            
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Last Updated
+                </h3>
+
+                <p id="updated">
+                    -
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Chart -->
+
+        <section class="chart-card">
+
+            <div class="section-title">
+
+                <h2>
+                    Top 20 Products
+                </h2>
+
+                <span>
+                    Units Sold — Last 60 Minutes
+                </span>
+
+            </div>
+
+            <div class="chart-container">
+
+                <canvas id="salesChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- Table -->
+
+        <section class="table-card">
+
+            <div class="section-title">
+
+                <h2>
+                    Product Sales
+                </h2>
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Rank
+                        </th>
+
+                        <th>
+                            Product
+                        </th>
+
+                        <th>
+                            Product ID
+                        </th>
+
+                        <th>
+                            Units Sold
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="productTable">
+
+                    <tr>
+
+                        <td colspan="4">
+                            Loading...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- Footer -->
+
+        <footer>
+
+            Data refreshes every 5 minutes
+
+        </footer>
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
