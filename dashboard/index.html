@@ -1,178 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>Retail Pulse | Real-Time Analytics</title>
 
-    <title>Retail & E-Commerce Analytics</title>
-
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- CSS -->
-    <link rel="stylesheet"
-          href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <!-- Header -->
+    <!-- ================= HEADER ================= -->
+    <header class="top-header">
 
-        <header>
+        <div class="brand">
+            <div class="brand-icon">🛒</div>
 
             <div>
+                <h1>Retail Pulse</h1>
+                <p>Real-Time E-Commerce Intelligence</p>
+            </div>
+        </div>
 
-                <h1>
-                    Retail & E-Commerce Analytics
-                </h1>
+        <div class="header-right">
 
-                <p>
-                    Real-Time Purchase Trend Dashboard
-                </p>
-
+            <div class="system-time" id="systemTime">
+                --:--:--
             </div>
 
             <div class="status">
-
                 <span class="status-dot"></span>
-            
-                <span id="status">
+                <span id="status">LIVE</span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= PIPELINE ================= -->
+
+    <section class="pipeline-card">
+
+        <div class="pipeline-title">
+            <div>
+                <h2>Streaming Pipeline</h2>
+                <p>Real-time purchase data flow</p>
+            </div>
+
+            <span class="pipeline-live">
+                ● STREAMING
+            </span>
+        </div>
+
+        <div class="pipeline">
+
+            <div class="pipeline-node active">
+                <div class="node-icon">🛒</div>
+                <span>Purchase Event</span>
+            </div>
+
+            <div class="pipeline-line">
+                <span>›</span>
+            </div>
+
+            <div class="pipeline-node active">
+                <div class="node-icon">⚡</div>
+                <span>Kafka</span>
+            </div>
+
+            <div class="pipeline-line">
+                <span>›</span>
+            </div>
+
+            <div class="pipeline-node">
+                <div class="node-icon">🗄️</div>
+                <span>HDFS</span>
+            </div>
+
+            <div class="pipeline-line">
+                <span>›</span>
+            </div>
+
+            <div class="pipeline-node">
+                <div class="node-icon">⚙️</div>
+                <span>MapReduce</span>
+            </div>
+
+            <div class="pipeline-line">
+                <span>›</span>
+            </div>
+
+            <div class="pipeline-node active">
+                <div class="node-icon">📊</div>
+                <span>Dashboard</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EVENT NOTIFICATION ================= -->
+
+    <div id="eventNotification" class="event-notification">
+        <span class="notification-icon">✓</span>
+        <span>Waiting for new events...</span>
+    </div>
+
+
+    <!-- ================= KPI CARDS ================= -->
+
+    <section class="kpi-grid">
+
+        <div class="kpi-card">
+
+            <div class="kpi-icon blue">📡</div>
+
+            <div class="kpi-content">
+                <span>Events in Window</span>
+                <strong id="events">-</strong>
+                <small>Last 60 minutes</small>
+            </div>
+
+        </div>
+
+
+        <div class="kpi-card">
+
+            <div class="kpi-icon purple">📦</div>
+
+            <div class="kpi-content">
+                <span>Total Events</span>
+                <strong id="totalEvents">-</strong>
+                <small>Received from Kafka</small>
+            </div>
+
+        </div>
+
+
+        <div class="kpi-card">
+
+            <div class="kpi-icon green">⏱️</div>
+
+            <div class="kpi-content">
+                <span>Analysis Window</span>
+                <strong id="window">60 Minutes</strong>
+                <small>Sliding window</small>
+            </div>
+
+        </div>
+
+
+        <div class="kpi-card">
+
+            <div class="kpi-icon orange">🔄</div>
+
+            <div class="kpi-content">
+                <span>Last Updated</span>
+                <strong id="updated">-</strong>
+                <small>Live refresh</small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN GRID ================= -->
+
+    <section class="main-grid">
+
+        <!-- CHART -->
+
+        <div class="glass-card chart-card">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Top 20 Products</h2>
+                    <p>Units sold during the last 60 minutes</p>
+                </div>
+
+                <div class="live-label">
+                    <span></span>
                     LIVE
-                </span>
-            
-            </div>
-
-        </header>
-
-
-        <!-- Summary Cards -->
-
-        <section class="summary">
-
-            <div id="eventNotification" class="event-notification">
-                Waiting for new events...
-            </div>
-
-            <div class="card">
-
-                <h3>
-                    Analysis Window
-                </h3>
-
-                <p id="window">
-                    60 Minutes
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>
-                    Events in Window
-                </h3>
-            
-                <p id="events">
-                    -
-                </p>
-            
-            </div>
-            
-            
-            <div class="card">
-            
-                <h3>
-                    Total Events Received
-                </h3>
-            
-                <p id="totalEvents">
-                    -
-                </p>
-            
-            </div>
-
-
-            <div class="card">
-
-                <h3>
-                    Last Updated
-                </h3>
-
-                <p id="updated">
-                    -
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- Chart -->
-
-        <section class="chart-card">
-
-            <div class="section-title">
-
-                <h2>
-                    Top 20 Products
-                </h2>
-
-                <span>
-                    Units Sold — Last 60 Minutes
-                </span>
+                </div>
 
             </div>
 
             <div class="chart-container">
-
                 <canvas id="salesChart"></canvas>
+            </div>
+
+        </div>
+
+
+        <!-- LATEST EVENT -->
+
+        <div class="glass-card latest-card">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Latest Purchase</h2>
+                    <p>Most recent Kafka event</p>
+                </div>
+
+                <div class="pulse-icon">
+                    ⚡
+                </div>
 
             </div>
 
-        </section>
+            <div class="latest-content">
 
+                <div class="latest-product-icon">
+                    🛍️
+                </div>
 
-        <!-- Table -->
+                <h3 id="latestProduct">
+                    Waiting for event...
+                </h3>
 
-        <section class="table-card">
+                <div class="latest-details">
 
-            <div class="section-title">
+                    <div>
+                        <span>Product ID</span>
+                        <strong id="latestProductId">-</strong>
+                    </div>
 
-                <h2>
-                    Product Sales
-                </h2>
+                    <div>
+                        <span>Quantity</span>
+                        <strong id="latestQuantity">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Event Time</span>
+                        <strong id="latestTime">-</strong>
+                    </div>
+
+                </div>
 
             </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SECOND ROW ================= -->
+
+    <section class="secondary-grid">
+
+        <!-- ACTIVITY -->
+
+        <div class="glass-card activity-card">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Incoming Event Rate</h2>
+                    <p>New purchase events received per refresh interval</p>
+                </div>
+
+                <span class="session-badge">
+                    ● ACTIVE
+                </span>
+
+            </div>
+
+            <div class="activity-bars" id="activityBars">
+
+                <div class="empty-activity">
+                    Waiting for streaming data...
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EVENT STREAM -->
+
+        <div class="glass-card event-stream-card">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Live Event Stream</h2>
+                    <p>Recent purchase events</p>
+                </div>
+
+                <span class="stream-count" id="streamCount">
+                    0 events
+                </span>
+
+            </div>
+
+            <div class="event-list" id="eventList">
+
+                <div class="empty-stream">
+                    Waiting for events...
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TOP PRODUCTS TABLE ================= -->
+
+    <section class="glass-card table-card">
+
+        <div class="section-header">
+
+            <div>
+                <h2>Product Rankings</h2>
+                <p>Top products by units sold</p>
+            </div>
+
+            <div class="ranking-info">
+                60-MIN WINDOW
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
 
             <table>
 
                 <thead>
 
                     <tr>
-
-                        <th>
-                            Rank
-                        </th>
-
-                        <th>
-                            Product
-                        </th>
-
-                        <th>
-                            Product ID
-                        </th>
-
-                        <th>
-                            Units Sold
-                        </th>
-
+                        <th>RANK</th>
+                        <th>PRODUCT</th>
+                        <th>PRODUCT ID</th>
+                        <th>UNITS SOLD</th>
+                        <th>SHARE</th>
                     </tr>
 
                 </thead>
@@ -180,35 +353,40 @@
                 <tbody id="productTable">
 
                     <tr>
-
-                        <td colspan="4">
+                        <td colspan="5">
                             Loading...
                         </td>
-
                     </tr>
 
                 </tbody>
 
             </table>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- Footer -->
+    <!-- ================= FOOTER ================= -->
 
-        <footer>
+    <footer>
 
-            Data refreshes every 5 minutes
+        <div>
+            <strong>Retail Pulse</strong>
+            <span>•</span>
+            Kafka + Hadoop + MapReduce
+        </div>
 
-        </footer>
+        <p>
+            Real-time analytics dashboard • Demo refresh: 5 seconds
+        </p>
 
-    </div>
+    </footer>
+
+</div>
 
 
-    <!-- JavaScript -->
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
-
 </html>
