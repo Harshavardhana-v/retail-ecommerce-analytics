@@ -3,7 +3,7 @@ services:
   kafka:
     image: apache/kafka:4.1.1
     container_name: retail-kafka
-
+    # run the apache kafka on this port 
     ports:
       - "9092:9092"
 
