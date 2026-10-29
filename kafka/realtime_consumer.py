@@ -151,16 +151,13 @@ def calculate_top20():
 # FUNCTION: SAVE RESULT
 # ============================================================
 
-def save_result(
-    current_time,
-    top20
-):
+
+def save_result(current_time, top20, latest_event):
+   
 
     result = {
-
         "window_start": (
-            current_time
-            - timedelta(minutes=WINDOW_MINUTES)
+            current_time - timedelta(minutes=WINDOW_MINUTES)
         ).strftime("%Y-%m-%d %H:%M:%S"),
 
         "window_end": current_time.strftime(
@@ -168,38 +165,18 @@ def save_result(
         ),
 
         "window_minutes": WINDOW_MINUTES,
-
         "generated_at": datetime.now().strftime(
             "%Y-%m-%d %H:%M:%S"
         ),
-
         "total_events_in_window": len(events),
-
         "total_events_received": event_count,
-
-        "latest_event":{
-            "product_id": product_id,
-            "product_name": product_name,
-            "event_time": event_time.strftime(
-                "%Y-%m-%d %H:%M:%S"
-            ),
-            "quantity": quantity
-        },
-
+        "latest_event": latest_event,
         "top_products": top20
     }
 
-    with open(
-        OUTPUT_FILE,
-        "w",
-        encoding="utf-8"
-    ) as file:
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as file:
+        json.dump(result, file, indent=4)
 
-        json.dump(
-            result,
-            file,
-            indent=4
-        )
 
 
 # ============================================================
@@ -274,9 +251,17 @@ try:
 
             top20 = calculate_top20()
 
+            latest_event = {
+    "product_id": product_id,
+    "product_name": product_name,
+    "event_time": event_time.strftime("%Y-%m-%d %H:%M:%S"),
+    "quantity": quantity
+}
+
             save_result(
                 event_time,
-                top20
+                top20,
+                 latest_event
             )
 
             print("\n" + "=" * 60)
