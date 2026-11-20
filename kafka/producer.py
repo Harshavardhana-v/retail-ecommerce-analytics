@@ -23,7 +23,7 @@ TOPIC = "purchase_events"
 MAX_RECORDS = 1500
 
 # Real delay between Kafka messages
-MESSAGE_DELAY = 0.5
+MESSAGE_DELAY = 0.4
 
 # Each Kafka event represents 1 simulated minute
 SIMULATED_MINUTES_PER_EVENT = 0.1
