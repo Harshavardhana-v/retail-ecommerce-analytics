@@ -20,7 +20,7 @@ KAFKA_SERVER = "localhost:9092"
 TOPIC = "purchase_events"
 
 # Number of records for testing
-MAX_RECORDS = 1200
+MAX_RECORDS = 1000
 
 # Real delay between Kafka messages
 MESSAGE_DELAY = 0.4
